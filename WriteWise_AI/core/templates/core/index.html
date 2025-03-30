@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-ContentPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(to right, #667eea, #764ba2); }
+        .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="p-6 flex justify-center items-center min-h-screen">
+    <div class="max-w-4xl w-full bg-white p-6 rounded-lg shadow-lg glass">
+        <h1 class="text-3xl font-extrabold text-gray-800 text-center mb-6">AI-ContentPro</h1>
+        
+        <!-- Topic Input -->
+        <label class="block text-gray-700 font-medium">Enter Topic</label>
+        <input id="topic" type="text" class="w-full p-3 border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500" placeholder="Enter your topic...">
+        
+        <!-- Category Selection -->
+        <label class="block text-gray-700 font-medium">Select Category</label>
+        <select id="category" class="w-full p-3 border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500">
+            <option>Technology</option>
+            <option>Health</option>
+            <option>Business</option>
+            <option>Education</option>
+        </select>
+        
+        <!-- Generate Content Button -->
+        <button onclick="generateContent()" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-all">Generate Content</button>
+        
+        <!-- Content Editor with Quill.js -->
+        <div class="mt-6">
+            <h2 class="text-lg font-bold text-gray-800">Generated Content</h2>
+            <div id="editor" class="w-full h-40 p-3 border rounded-lg bg-white"></div>
+        </div>
+        
+        <!-- SEO Insights -->
+        <div class="mt-6 p-4 bg-gray-100 rounded-lg">
+            <h2 class="text-lg font-bold text-gray-800">SEO Optimization</h2>
+            <p id="seo-suggestions" class="text-gray-600">AI-generated meta tags, keywords will appear here...</p>
+        </div>
+        
+        <!-- Publish Button -->
+        <button onclick="publishContent()" class="w-full bg-green-500 text-white p-3 rounded-lg mt-4 hover:bg-green-600 transition-all">Publish</button>
+    </div>
+    
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+        
+        function generateContent() {
+            let topic = document.getElementById('topic').value;
+            let category = document.getElementById('category').value;
+            quill.setText(`Generating AI content for: ${topic} in ${category}...`);
+        }
+        
+        function publishContent() {
+            alert("Content Published Successfully!");
+        }
+    </script>
+</body>
+</html>
